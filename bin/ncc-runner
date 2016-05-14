@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+const commandLineArgs = require('command-line-args');
+const ncc = require('../')
+const cluster = require('cluster')
+const os = require('os')
+
+let cli = commandLineArgs([
+  { name: 'target', alias: 't', type: String, defaultValue: '127.0.0.1:9000', defaultOption: true },
+  { name: 'instances', alias: 'i', type: Number, defaultValue: os.cpus().length },
+  { name: 'tags', alias: 'g', type: String },
+  { name: 'help', alias: 'h'}
+])
+let options = cli.parse()
+
+if(options.help) {
+  console.log('ncc-runner')
+  return console.log(cli.getUsage())
+}
+
+//if(cluster.isMaster && options.instances > 0)
+const runner = new ncc.Runner(options.target)
+if(options.tags)
+  runner.tags = runner.tags.concat(options.tags.split(','))
+
+setTimeout(() => {
+  console.log(runner.tags)
+}, 1000)

@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+const commandLineArgs = require('command-line-args');
+const ncc = require('../')
+
+let cli = commandLineArgs([
+  { name: 'port', alias: 'p', type: Number, defaultValue: 9000 },
+  { name: 'help', alias: 'h'}
+])
+let options = cli.parse()
+
+if(options.help) {
+  console.log('ncc-broker')
+  return console.log(cli.getUsage())
+}
+const broker = new ncc.Broker()
+broker.listen(options.port, () => {
+  console.log('Broker running at port', options.port)
+})

@@ -1,0 +1,33 @@
+{
+  "name": "ncc",
+  "version": "0.1.4",
+  "description": "Node.js Compute Cloud",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tria-hr/ncc.git"
+  },
+  "author": "davor@tria.hr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tria-hr/ncc/issues"
+  },
+  "homepage": "https://github.com/tria-hr/ncc#readme",
+  "dependencies": {
+    "command-line-args": "^2.1.6",
+    "esprima": "^2.7.2",
+    "moment": "^2.12.0",
+    "uuid": "^2.0.1",
+    "ws": "^1.0.1"
+  },
+  "bin": {
+    "ncc-broker": "./bin/ncc-broker",
+    "ncc-runner": "./bin/ncc-runner"    
+  }
+}

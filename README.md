@@ -1,1 +1,1 @@
-# ncc
+# node-compute-cloud
